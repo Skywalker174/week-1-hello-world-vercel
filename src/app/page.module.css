@@ -1,0 +1,43 @@
+.main {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 20% 20%, #7c3aed 0, transparent 35%),
+    radial-gradient(circle at 80% 80%, #2563eb 0, transparent 35%),
+    #09090b;
+}
+
+.card {
+  width: min(560px, 100%);
+  padding: 64px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  color: white;
+  text-align: center;
+  backdrop-filter: blur(20px);
+}
+
+.eyebrow {
+  margin-bottom: 16px;
+  color: #c4b5fd;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.card h1 {
+  font-size: clamp(3rem, 11vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+}
+
+.message {
+  margin-top: 24px;
+  color: #d4d4d8;
+  font-size: 1.05rem;
+}
