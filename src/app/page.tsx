@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { connection } from "next/server";
+import MarketWidgets from "./market-widgets";
 import styles from "./page.module.css";
 
 type StockItem = {
@@ -56,6 +57,13 @@ export default async function Home() {
             <span>stocks</span>
           </div>
         </header>
+
+        <MarketWidgets
+          symbols={stocks.map((stock) => ({
+            ticker: stock.ticker,
+            companyName: stock.company_name,
+          }))}
+        />
 
         <ul className={styles.grid}>
           {stocks.map((stock) => (

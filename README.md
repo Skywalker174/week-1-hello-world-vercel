@@ -16,4 +16,4 @@ npm install
 npm run dev
 ```
 
-The home page fetches rows from the Supabase `stock_watchlist` table and renders them as cards.
+The home page fetches rows from the Supabase `stock_watchlist` table and renders them as cards. TradingView widgets add current quotes and an interactive line chart without requiring another API key.

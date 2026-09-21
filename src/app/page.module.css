@@ -78,7 +78,58 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
+  margin-top: 30px;
   list-style: none;
+}
+
+.marketData {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 26px;
+  background: rgba(5, 15, 13, 0.74);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.26);
+}
+
+.tickerTape {
+  min-height: 74px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.chartHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 28px 30px 20px;
+}
+
+.chartHeader .eyebrow {
+  margin-bottom: 8px;
+}
+
+.chartHeader h2 {
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  letter-spacing: -0.045em;
+}
+
+.chartHeader > p {
+  max-width: 330px;
+  color: #83948e;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  text-align: right;
+}
+
+.chart {
+  width: 100%;
+  height: 520px;
+}
+
+.marketNote {
+  padding: 12px 28px 18px;
+  color: #667772;
+  font-size: 0.72rem;
+  text-align: right;
 }
 
 .card {
@@ -199,6 +250,19 @@
 
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .chartHeader {
+    display: block;
+  }
+
+  .chartHeader > p {
+    margin-top: 10px;
+    text-align: left;
+  }
+
+  .chart {
+    height: 460px;
   }
 
   .card {
