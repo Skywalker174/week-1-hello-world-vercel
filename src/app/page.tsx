@@ -2,15 +2,16 @@ import { createClient } from "@supabase/supabase-js";
 import { connection } from "next/server";
 import styles from "./page.module.css";
 
-type ReadingItem = {
+type StockItem = {
   id: number;
-  title: string;
-  category: string;
-  status: string;
-  rating: number;
+  ticker: string;
+  company_name: string;
+  sector: string;
+  watch_status: string;
+  target_price: number;
 };
 
-async function getReadingList(): Promise<ReadingItem[]> {
+async function getStockWatchlist(): Promise<StockItem[]> {
   await connection();
 
   const supabaseUrl = process.env.SUPABASE_URL;
@@ -25,56 +26,59 @@ async function getReadingList(): Promise<ReadingItem[]> {
   });
 
   const { data, error } = await supabase
-    .from("reading_list")
-    .select("id, title, category, status, rating")
-    .order("id");
+    .from("stock_watchlist")
+    .select("id, ticker, company_name, sector, watch_status, target_price")
+    .order("ticker");
 
   if (error) {
-    throw new Error(`Unable to load the reading list: ${error.message}`);
+    throw new Error(`Unable to load the stock watchlist: ${error.message}`);
   }
 
   return data;
 }
 
 export default async function Home() {
-  const readingList = await getReadingList();
+  const stocks = await getStockWatchlist();
 
   return (
     <main className={styles.main}>
       <div className={styles.shell}>
         <header className={styles.header}>
           <div>
-            <p className={styles.eyebrow}>Hello Supabase</p>
-            <h1>My reading list</h1>
+            <p className={styles.eyebrow}>Market watch · Supabase</p>
+            <h1>Stock watchlist</h1>
             <p className={styles.intro}>
-              A small collection fetched live from a Supabase table.
+              Companies on my radar, fetched live from a Supabase table.
             </p>
           </div>
           <div className={styles.count}>
-            <strong>{readingList.length}</strong>
-            <span>books</span>
+            <strong>{stocks.length}</strong>
+            <span>stocks</span>
           </div>
         </header>
 
         <ul className={styles.grid}>
-          {readingList.map((item) => (
-            <li className={styles.card} key={item.id}>
+          {stocks.map((stock) => (
+            <li className={styles.card} key={stock.id}>
               <div className={styles.cardTop}>
-                <span className={styles.category}>{item.category}</span>
-                <span className={styles.status}>{item.status}</span>
+                <span className={styles.ticker}>{stock.ticker}</span>
+                <span className={styles.status}>{stock.watch_status}</span>
               </div>
-              <h2>{item.title}</h2>
-              <p className={styles.rating} aria-label={`${item.rating} out of 5 stars`}>
-                {"★".repeat(item.rating)}
-                <span>{"★".repeat(5 - item.rating)}</span>
-              </p>
+              <h2>{stock.company_name}</h2>
+              <div className={styles.cardFooter}>
+                <span className={styles.sector}>{stock.sector}</span>
+                <p className={styles.target}>
+                  <span>Target</span>
+                  ${Number(stock.target_price).toFixed(2)}
+                </p>
+              </div>
             </li>
           ))}
         </ul>
 
         <footer className={styles.footer}>
           <span className={styles.dot} />
-          Live data from Supabase
+          Watchlist data from Supabase
         </footer>
       </div>
     </main>

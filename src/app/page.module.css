@@ -107,7 +107,7 @@
   gap: 16px;
 }
 
-.category,
+.ticker,
 .status {
   font-size: 0.72rem;
   font-weight: 700;
@@ -115,8 +115,10 @@
   text-transform: uppercase;
 }
 
-.category {
+.ticker {
   color: #6ee7b7;
+  font-size: 0.9rem;
+  letter-spacing: 0.16em;
 }
 
 .status {
@@ -133,14 +135,33 @@
   letter-spacing: -0.035em;
 }
 
-.rating {
-  color: #fbbf24;
-  font-size: 1rem;
-  letter-spacing: 0.14em;
+.cardFooter {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
 }
 
-.rating span {
-  color: rgba(255, 255, 255, 0.17);
+.sector {
+  color: #8fa19b;
+  font-size: 0.82rem;
+}
+
+.target {
+  color: #f8fafc;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-align: right;
+}
+
+.target span {
+  display: block;
+  margin-bottom: 4px;
+  color: #6ee7b7;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .footer {

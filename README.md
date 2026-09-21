@@ -1,6 +1,6 @@
 # tw3184-vercel-week2
 
-Week 2 assignment: a Next.js reading-list page backed by Supabase and deployed on Vercel.
+Week 2 assignment: a Next.js stock-watchlist page backed by Supabase and deployed on Vercel.
 
 ## Environment variables
 
@@ -16,4 +16,4 @@ npm install
 npm run dev
 ```
 
-The home page fetches rows from the Supabase `reading_list` table and renders them as cards.
+The home page fetches rows from the Supabase `stock_watchlist` table and renders them as cards.
