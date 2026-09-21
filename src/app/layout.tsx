@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hello World",
-  description: "A simple Hello World app built with Next.js.",
+  title: "Supabase Reading List",
+  description: "A reading list powered by Next.js and Supabase.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
