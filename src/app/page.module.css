@@ -120,9 +120,112 @@
   text-align: right;
 }
 
-.chart {
+.nativeChart {
+  min-height: 500px;
+  padding: 0 30px 24px;
+}
+
+.chartControls,
+.symbolButtons,
+.rangeButtons,
+.priceSummary {
+  display: flex;
+  align-items: center;
+}
+
+.chartControls {
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.symbolButtons,
+.rangeButtons {
+  gap: 7px;
+}
+
+.chartControls button {
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9px;
+  color: #91a39d;
+  background: rgba(255, 255, 255, 0.035);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.chartControls button:hover,
+.chartControls .activeButton {
+  border-color: rgba(52, 211, 153, 0.5);
+  color: #d1fae5;
+  background: rgba(52, 211, 153, 0.13);
+}
+
+.priceSummary {
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.priceSummary strong {
+  font-size: clamp(2rem, 5vw, 3.3rem);
+  letter-spacing: -0.05em;
+}
+
+.priceSummary span {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.positive { color: #34d399; }
+.negative { color: #fb7185; }
+
+.plot {
+  position: relative;
+  height: 330px;
+}
+
+.plot svg {
   width: 100%;
-  height: 520px;
+  height: 100%;
+  overflow: visible;
+}
+
+.plot line {
+  stroke: rgba(255, 255, 255, 0.065);
+  stroke-width: 1;
+}
+
+.plot polyline {
+  fill: none;
+  stroke: #34d399;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+}
+
+.highLabel,
+.lowLabel {
+  position: absolute;
+  right: 8px;
+  z-index: 1;
+  padding: 3px 6px;
+  border-radius: 5px;
+  color: #8fa19b;
+  background: rgba(7, 17, 15, 0.82);
+  font-size: 0.68rem;
+}
+
+.highLabel { top: 5px; }
+.lowLabel { bottom: 5px; }
+
+.chartState {
+  min-height: 390px;
+  display: grid;
+  place-items: center;
+  color: #83948e;
 }
 
 .marketNote {
@@ -261,8 +364,18 @@
     text-align: left;
   }
 
-  .chart {
-    height: 460px;
+  .nativeChart {
+    min-height: 430px;
+    padding-inline: 18px;
+  }
+
+  .chartControls {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .plot {
+    height: 270px;
   }
 
   .card {
