@@ -24,6 +24,13 @@ const ranges = [
   { label: "1M", value: "1mo" },
 ] as const;
 
+const exchangeByTicker: Record<string, string> = {
+  JPM: "NYSE",
+  UNH: "NYSE",
+  XOM: "NYSE",
+  SPY: "AMEX",
+};
+
 function useTradingViewWidget(
   source: string,
   configuration: Record<string, unknown>,
@@ -65,7 +72,7 @@ export default function MarketWidgets({ symbols }: { symbols: MarketSymbol[] }) 
     () => ({
       symbols: symbols.map(({ ticker, companyName }) => ({
         description: companyName,
-        proName: `NASDAQ:${ticker}`,
+        proName: `${exchangeByTicker[ticker] ?? "NASDAQ"}:${ticker}`,
       })),
       showSymbolLogo: true,
       colorTheme: "dark",

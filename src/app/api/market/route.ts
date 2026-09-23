@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const allowedSymbols = new Set(["AAPL", "MSFT", "NVDA", "TSLA"]);
+const allowedSymbols = new Set([
+  "AAPL", "MSFT", "NVDA", "TSLA", "AMZN", "GOOGL", "META",
+  "AMD", "JPM", "XOM", "UNH", "COST", "SPY", "QQQ",
+]);
 const rangeSettings: Record<string, { range: string; interval: string }> = {
   "1d": { range: "1d", interval: "5m" },
   "5d": { range: "5d", interval: "15m" },

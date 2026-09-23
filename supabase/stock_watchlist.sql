@@ -27,3 +27,22 @@ values
   ('MSFT', 'Microsoft', 'Technology', 'Watching', 575.00),
   ('NVDA', 'NVIDIA', 'Semiconductors', 'High conviction', 235.00),
   ('TSLA', 'Tesla', 'Automotive', 'On watch', 525.00);
+
+insert into public.stock_watchlist
+  (ticker, company_name, sector, watch_status, target_price)
+values
+  ('AMZN', 'Amazon', 'Consumer & Cloud', 'Research', 249.27),
+  ('GOOGL', 'Alphabet', 'Communication Services', 'Research', 337.83),
+  ('META', 'Meta Platforms', 'Communication Services', 'Research', 744.10),
+  ('AMD', 'Advanced Micro Devices', 'Semiconductors', 'Research', 614.61),
+  ('JPM', 'JPMorgan Chase', 'Financials', 'Diversifier', 337.53),
+  ('XOM', 'Exxon Mobil', 'Energy', 'Diversifier', 161.23),
+  ('UNH', 'UnitedHealth Group', 'Health Care', 'Diversifier', 371.29),
+  ('COST', 'Costco', 'Consumer Staples', 'Quality watch', 904.70),
+  ('SPY', 'SPDR S&P 500 ETF', 'Broad Market ETF', 'Benchmark', 767.81),
+  ('QQQ', 'Invesco QQQ ETF', 'Growth ETF', 'Benchmark', 741.21)
+on conflict (ticker) do update set
+  company_name = excluded.company_name,
+  sector = excluded.sector,
+  watch_status = excluded.watch_status,
+  target_price = excluded.target_price;

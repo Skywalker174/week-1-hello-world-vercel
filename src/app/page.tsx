@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { connection } from "next/server";
 import MarketWidgets from "./market-widgets";
+import StockResearchAgent from "./stock-research-agent";
 import styles from "./page.module.css";
 
 type StockItem = {
@@ -40,6 +41,10 @@ async function getStockWatchlist(): Promise<StockItem[]> {
 
 export default async function Home() {
   const stocks = await getStockWatchlist();
+  const symbols = stocks.map((stock) => ({
+    ticker: stock.ticker,
+    companyName: stock.company_name,
+  }));
 
   return (
     <main className={styles.main}>
@@ -58,12 +63,9 @@ export default async function Home() {
           </div>
         </header>
 
-        <MarketWidgets
-          symbols={stocks.map((stock) => ({
-            ticker: stock.ticker,
-            companyName: stock.company_name,
-          }))}
-        />
+        <MarketWidgets symbols={symbols} />
+
+        <StockResearchAgent symbols={symbols} />
 
         <ul className={styles.grid}>
           {stocks.map((stock) => (
